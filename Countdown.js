@@ -1,4 +1,15 @@
-<script type="text/javascript">
+//This file contains the external JavaScript for the Countdown.html file. 
+
+	$(document).ready(function() 
+		{
+			$("#submit").click(function()
+			{
+				convertMillis();
+				subtract();
+			})
+		}
+	);
+
 	//The value that the user enters into the text field. 
 	var collection = document.getElementById("colldate").value;
 	// Get todays date and time
@@ -60,4 +71,3 @@
         document.getElementById("demo").innerHTML = "EXPIRED";
     }
 }, 1000);**/
-</script>
