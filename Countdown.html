@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<h3> Prescription Date Calculator </h3>
+	<!--Importing the jQuery library-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<!--Importing the moment.js library-->
+	<script src="moment.js"></script>
+	<script>
+		$(document).ready(function() 
+			{
+				$("#submit").click(function()
+				{
+					convertMillis();
+					subtract();
+				})
+			}
+		);
+	</script>
+</head>
+<body>
+
+<style type="text/css">
+	.container 
+	{
+		width: 200px;
+		clear: both;
+	}
+
+	.container input 
+	{
+		width: 100%;
+		clear: both;
+	}
+</style>	
+
+<form class="container">
+	<!--Patient Name: <input type="text" name="patname"/> </br>-->
+	Collection Date: <input type="longdate" id="colldate"/> </br> </br>
+	<input type="submit" id="submit">
+</form>
+
+<p id="demo"> </p>
+
+
+<script type="text/javascript">
+	//The value that the user enters into the text field. 
+	var collection = document.getElementById("colldate").value;
+	// Get todays date and time
+    var today = new Date();
+	//var patient = document.getElementByName("patname")[0].value;
+
+	//Check if the text field contains any data. If it does not, display an alert box. 
+	function emptyCheck()
+	{
+		if(collection === "") //|| patient === "")
+		{
+			alert("The required field is null!");
+		}	
+	}
+	
+
+	// Set the date we're counting down to
+	//var countDownDate = new Date(collection).getTime();
+
+	// Update the count down every 1 second
+	//var x = setInterval(function() {
+
+    function convertMillis()
+    {	
+    	//Convert 'today' into milliseconds and output it to the console. 
+    	var ms = today.getMilliseconds();
+    	console.log(ms);
+    }
+    
+    // Find the distance between now and the count down date
+	function subtract()
+	{
+		if(collection != "")
+		{
+			var difference = today - collection;
+			console.log(difference);
+		}
+		
+		else if(collection == "" || collection != "DD/MM/YYY")
+		{
+			emptyCheck();
+		}
+	}
+
+    
+    // Time calculations for days, hours, minutes and seconds
+    /**var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+    // Output the result in an element with id="demo"
+    document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+    + minutes + "m " + seconds + "s ";
+    
+    // If the count down is over, write some text 
+    if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("demo").innerHTML = "EXPIRED";
+    }
+}, 1000);**/
+
+</script>
+</body>
+</html>
